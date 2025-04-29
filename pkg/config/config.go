@@ -15,6 +15,8 @@ type Config struct {
 	RequestTopicName  string `env:"REQUEST_TOPIC_NAME" envDefault:"requests"`
 	TopicName         string `env:"TOPIC_NAME" envDefault:"events"`
 	GroupID           string `env:"GROUP_ID" envDefault:"vote"`
+	RedisSentinelUrl  string `env:"REDIS_SENTINEL_HOST" envDefault:"redis-sentinel"`
+	RedisPassword     string `env:"REDIS_PASSWORD" envDefault:"redis"`
 }
 
 func Load() (*Config, error) {
@@ -25,6 +27,8 @@ func Load() (*Config, error) {
 	if err := env.Parse(&cfg); err != nil {
 		return nil, err
 	}
+
+	cfg.RedisSentinelUrl = cfg.RedisSentinelUrl + ":26379"
 
 	return &cfg, nil
 }
