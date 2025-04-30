@@ -3,8 +3,8 @@ package entity
 import "github.com/google/uuid"
 
 type Vote struct {
-	ID      uuid.UUID `json:"id" gorm:"type:uuid;primaryKey;default:uuid_generate_v4()"`
-	PollID  uuid.UUID `json:"poll_id" gorm:"type:uuid"`
+	ID      uuid.UUID `json:"id"       gorm:"type:uuid;primaryKey;default:uuid_generate_v4()"`
+	PollID  uuid.UUID `json:"poll_id"  gorm:"type:uuid"`
 	FieldID uint      `json:"field_id"`
 	UserID  uuid.UUID `json:"user_id"`
 }
