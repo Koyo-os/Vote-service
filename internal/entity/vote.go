@@ -3,10 +3,11 @@ package entity
 import "github.com/google/uuid"
 
 type Vote struct {
-	ID      uuid.UUID `json:"id"       gorm:"type:uuid;primaryKey;default:uuid_generate_v4()"`
+	ID      uuid.UUID `json:"id"       gorm:"type:uuid;primaryKey;"`
 	PollID  uuid.UUID `json:"poll_id"  gorm:"type:uuid"`
 	FieldID uint      `json:"field_id"`
-	UserID  uuid.UUID `json:"user_id"`
+	Anonim  bool      `json:"anonim"`
+	UserID  uuid.UUID `json:"user_id"  gorm:"type:uuid"`
 }
 
 func NewVote(PollID string, fieldID uint, userId string) *Vote {
