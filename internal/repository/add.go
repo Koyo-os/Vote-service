@@ -4,8 +4,11 @@ import (
 	"context"
 
 	"github.com/Koyo-os/Vote-service/internal/entity"
+	"github.com/Koyo-os/Vote-service/internal/service"
 	"go.uber.org/zap"
 )
+
+var _ service.Repostory = &VoteRepositoryImpl{}
 
 func (repoImpl *VoteRepositoryImpl) Add(ctx context.Context, vote *entity.Vote) error {
 	res := repoImpl.db.Create(vote)
