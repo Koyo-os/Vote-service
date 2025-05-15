@@ -10,9 +10,9 @@ type VoteRepositoryImpl struct {
 	logger *logger.Logger
 }
 
-func Init(db *gorm.DB, logger *logger.Logger) (VoteRepository, error) {
+func Init(db *gorm.DB, logger *logger.Logger) *VoteRepositoryImpl {
 	return &VoteRepositoryImpl{
 		db:     db,
 		logger: logger,
-	}, nil
+	}
 }
