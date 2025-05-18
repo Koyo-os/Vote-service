@@ -22,7 +22,10 @@ func (repo *VoteRepositoryImpl) Delete(ctx context.Context, id uuid.UUID) error 
 	return nil
 }
 
-func (repo *VoteRepositoryImpl) DeleteByPollID(ctx context.Context, pollID uuid.UUID) ([]entity.Vote, error) {
+func (repo *VoteRepositoryImpl) DeleteByPollID(
+	ctx context.Context,
+	pollID uuid.UUID,
+) ([]entity.Vote, error) {
 	var votes []entity.Vote
 
 	res := repo.db.Where(&entity.Vote{
